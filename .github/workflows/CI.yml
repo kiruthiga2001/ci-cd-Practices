@@ -1,0 +1,20 @@
+name: Simple File Creation CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create-file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Create a text file
+        run: echo "This file was created by CI/CD pipeline on $(date)" > generated_file.txt
+
+      - name: Show contents of the file
+        run: cat generated_file.txt
